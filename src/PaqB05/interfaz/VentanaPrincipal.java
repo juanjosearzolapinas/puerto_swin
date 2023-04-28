@@ -39,6 +39,9 @@ public class VentanaPrincipal extends JFrame {
     private int numHub;                         // Hub de contenedores actual
     private VentanaInfContenedor info;          // Ventana de información, para el cambio de paneles
     private VentanaPrincipal estaVentana;       // Puntero al objeto de esta propia ventana, para el cambio de paneles
+    private JButton PesoHub;
+
+    private TotalHub peso;
 
     public VentanaPrincipal(Puerto puerto) {
         // Añadimos el listado de países a los Combo Box
@@ -193,11 +196,33 @@ public class VentanaPrincipal extends JFrame {
                 actualizarEstado();
             }
         });
+
+        /*
+         * Actualiza el estado del mapa de contenedores del Hub actual.
+         */
+
+
+        //ActionListeners para cuando se toque el boton PesoHub
+        PesoHub.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(PesoHub.isSelected()){
+
+                   peso = new TotalHub(estaVentana);
+
+
+
+
+
+                }
+
+
+            }
+        });
+
     }
 
-    /**
-     * Actualiza el estado del mapa de contenedores del Hub actual.
-     */
     private void actualizarEstado() {
         estadoTextArea.setText(puerto.getHub(numHub-1).toString());
         estadoJLabel.setText("Estado (Libre u Ocupado) - Hub " + (numHub));
